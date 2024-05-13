@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19 Dashboard</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">COVID-19 Dashboard</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div id="cases-plot"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="deaths-plot"></div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div id="vaccinations-plot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Render the Plotly chart for cases
+        var casesPlot = document.getElementById('cases-plot');
+        Plotly.newPlot(casesPlot, {{ cases_html|safe }});
+
+        // Render the Plotly chart for deaths
+        var deathsPlot = document.getElementById('deaths-plot');
+        Plotly.newPlot(deathsPlot, {{ deaths_html|safe }});
+
+        // Render the Plotly chart for vaccinations initiated
+        var vaccinationsPlot = document.getElementById('vaccinations-plot');
+        Plotly.newPlot(vaccinationsPlot, {{ vaccinations_html|safe }});
+    </script>
+</body>
+</html>
